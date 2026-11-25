@@ -30,8 +30,9 @@ splits exactly into a sender and a receiver side (`adapter.side_score`), and Nul
 | `run`, `side_score`, `null_a`, `null_b`, `testable` | working: every (pair, source, target), Null A and Null B on one permutation sequence |
 | `fidelity` | column 1 vs column 2: same positive rows, scores equal to 1e-9 (relative) |
 
-Tested on toy data against NATMI's arithmetic transcribed from `ExtractEdges.py`. Not yet run against native
-NATMI or on the benchmark's data sets.
+Tested on toy data against NATMI's arithmetic transcribed from `ExtractEdges.py`, and against native NATMI on all
+five of Benchmark 1's data sets (AMENDMENT_5): our scores equal native NATMI's on every row, largest relative
+difference 1e-12 ([`AMENDMENT_5_NATMI.md`](../../benchmarks/results/liana_nulls/AMENDMENT_5_NATMI.md)).
 
 ## Native environment
 
