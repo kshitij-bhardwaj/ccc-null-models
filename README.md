@@ -13,7 +13,6 @@ known-null shuffles, planted interactions and spatial and downstream truths.
 ```
 ccc-null-models/
 ├── README.md     this file
-├── slides/       for the final presentation (not in this repository yet)
 ├── report/       report.pdf, the final report
 └── code/         the final code, with its own README.md: installation (Python and R), data sources and download,
                   the command for each result, folder structure

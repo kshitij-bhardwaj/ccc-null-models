@@ -8,9 +8,9 @@ pre-registered benchmarks compare them with each tool's own test: at tool level 
 consensus ranking (Benchmark 2). Every number in the report comes from the JSON files in `benchmarks/results/` and
 `tools/cellchat/results/`, produced by the commands below.
 
-Names in the report and slides vs. names in the code and result files:
+Names in the report vs. names in the code and result files:
 
-| Report / slides | Code and result files |
+| Report | Code and result files |
 |---|---|
 | Joint label permutation (JLP), the tools' own test | Null A, `null_a` |
 | Bilateral permutation test (BPT); stratified BPT = within-donor | Null B, `null_b` (`ccc_nulls.composite`, `ccc_nulls.liana_consensus`) |
