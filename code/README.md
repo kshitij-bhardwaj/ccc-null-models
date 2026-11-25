@@ -209,7 +209,6 @@ see [`RUN.md`](RUN.md); `--only REGEX` keeps only the runs whose tag matches.
 The report's three figures come from the committed result files; nothing is recomputed (a few seconds):
 
 ```bash
-cd code
 python figures/make_figures.py            # all three (or python run.py figures, make figures); or name some: python figures/make_figures.py fig2
 ```
 

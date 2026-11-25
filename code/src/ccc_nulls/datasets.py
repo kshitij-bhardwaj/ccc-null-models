@@ -155,6 +155,10 @@ def download(name: str, parts: int = 16, force: bool = False) -> Path:
         if meta["md5"] and md5sum(out) != meta["md5"]:
             raise RuntimeError(f"{out} exists but its md5 does not match; re-run with force=True")
         return out
+    if meta["url"].startswith(S3):
+        raise RuntimeError(
+            f"{name}: Open Problems closed its download bucket (HTTP 403). Download {out.name} from the public Kaggle "
+            f"data set kshitijbhardwaj1729/ccc-nulls-openproblems and save it as {out}; this command then checks its md5.")
     out.parent.mkdir(parents=True, exist_ok=True)
     size, step = meta["size"], -(-meta["size"] // parts)
     with tempfile.TemporaryDirectory(dir=out.parent) as tmp:
@@ -257,5 +261,11 @@ def load_tabula_sapiens(name: str, genes=None, min_cells: int = 5, obs_cols=()):
 
 
 if __name__ == "__main__":
+    failed = []
     for n in sys.argv[1:] or ["tnbc_wu2021"]:
-        print(n, "->", download(n))
+        try:
+            print(n, "->", download(n))
+        except RuntimeError as e:                       # report it and go on with the other data sets
+            print(e, file=sys.stderr)
+            failed.append(n)
+    sys.exit(f"not downloaded: {', '.join(failed)}" if failed else 0)

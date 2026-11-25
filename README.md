@@ -11,19 +11,20 @@ known-null shuffles, planted interactions and spatial and downstream truths.
 ## Layout
 
 ```
-CS690_Project6/
+ccc-null-models/
 ├── README.md     this file
-├── slides/       final presentation: PDF and source
-├── report/       report.pdf
+├── slides/       for the final presentation (not in this repository yet)
+├── report/       report.pdf, the final report
 └── code/         the final code, with its own README.md: installation (Python and R), data sources and download,
                   the command for each result, folder structure
 ```
 
-To reproduce: follow [`code/README.md`](code/README.md); its section 5 names the code behind every table and figure. In short, from `code/`:
+To reproduce: follow [`code/README.md`](code/README.md); its section 5 names the code behind every table and figure. In short, starting from this folder:
 
 Linux / macOS (bash or zsh):
 
 ```bash
+cd code
 python3.12 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt && pip install --no-deps -e .
 export PYTHONPATH=$PWD/src:$PWD
@@ -34,6 +35,7 @@ python run.py data                   # the data sets (about 9 GB), then: python 
 Windows (PowerShell):
 
 ```powershell
+cd code
 py -3.12 -m venv .venv; .venv\Scripts\Activate.ps1
 pip install -r requirements.txt; pip install --no-deps -e .
 $env:PYTHONPATH = "$PWD\src;$PWD"
@@ -43,4 +45,10 @@ python run.py data                   # then: python run.py benchmark1 benchmark2
 
 `run.py` has the Makefile's targets for any OS; on Linux and macOS `make test`, `make reports` and so on do the same.
 If PowerShell refuses to run `Activate.ps1`, allow local scripts once with
-`Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`. The published runs used Linux (Kaggle, a lab server) and macOS.
+`Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`.
+
+**Before `run.py data`:** two data sets (TNBC and Allen brain) came from Open Problems, whose download bucket is now
+closed. Download them from the public Kaggle data set
+[`kshitijbhardwaj1729/ccc-nulls-openproblems`](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-openproblems)
+(Kaggle needs a free account) and put them in `code/data/` under the names in
+[`code/data/README.md`](code/data/README.md); `run.py data` then checks their md5 and downloads the rest. The published runs used Linux (Kaggle, a lab server) and macOS.
